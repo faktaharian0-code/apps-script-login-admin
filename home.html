@@ -117,6 +117,41 @@
       color: #0d6efd;
       margin-bottom: 15px;
     }
+    .card-profile {
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+    .card-profile .card-header {
+      background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .card-profile .card-body {
+      padding: 25px;
+    }
+    .card-profile .card-title {
+      color: #0d6efd;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .btn-profile {
+      background: linear-gradient(45deg, #0d6efd, #6610f2);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      color: white;
+      text-decoration: none;
+    }
+    .btn-profile:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+    }
   </style>
 </head>
 <body>
@@ -127,8 +162,8 @@
     <div class="hero-content">
       <h1 class="hero-title">Selamat Datang di Portal</h1>
       <p class="hero-subtitle">Direktorat Jenderal Bimbingan Masyarakat Kristen</p>
-      <a href="#about-section" class="btn btn-light btn-lg rounded-pill px-4 py-2 shadow-sm">
-        Jelajahi Sekarang <i class="bi bi-arrow-down-circle-fill ms-2"></i>
+      <a href="#profil-section" class="btn btn-light btn-lg rounded-pill px-4 py-2 shadow-sm">
+        Jelajahi Profil <i class="bi bi-arrow-down-circle-fill ms-2"></i>
       </a>
     </div>
   </div>
@@ -151,72 +186,4 @@
           <div class="icon-circle bg-success">
             <i class="bi bi-newspaper"></i>
           </div>
-          <h5 class="mt-3 mb-2">BERITA</h5>
-          <p class="text-muted small">Informasi Terkini</p>
-          <a href="#" class="btn btn-sm btn-outline-success">Baca Berita</a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="info-card">
-          <div class="icon-circle bg-warning">
-            <i class="bi bi-megaphone"></i>
-          </div>
-          <h5 class="mt-3 mb-2">INFO PENTING</h5>
-          <p class="text-muted small">Pengumuman & Kebijakan</p>
-          <a href="#" class="btn btn-sm btn-outline-warning">Cek Info</a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="info-card">
-          <div class="icon-circle bg-danger">
-            <i class="bi bi-gavel"></i>
-          </div>
-          <h5 class="mt-3 mb-2">PRODUK HUKUM</h5>
-          <p class="text-muted small">Peraturan & Undang-undang</p>
-          <a href="#" class="btn btn-sm btn-outline-danger">Unduh</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Tentang Kami Section - info umum di homepage -->
-  <section id="about-section" class="container py-5">
-    <div class="section-header">
-      <h2>Tentang Kami</h2>
-      <p class="text-muted">Mengenal lebih dekat Direktorat Jenderal Bimbingan Masyarakat Kristen</p>
-    </div>
-    <div class="row">
-      <div class="col-lg-6 mb-4">
-        <div class="p-4 bg-white rounded-3 shadow-sm h-100">
-          <h3 class="text-primary mb-3">Misi Kami</h3>
-          <p class="lead">
-            Berkomitmen untuk mengembangkan masyarakat Kristen yang mandiri, berintegritas, dan berkontribusi 
-            positif bagi kerukunan umat beragama di Indonesia.
-          </p>
-          <p>
-            Melalui program-program bimbingan spiritual, pendidikan, dan pemberdayaan sosial, kami berupaya 
-            mewujudkan masyarakat yang memiliki pemahaman keagamaan yang moderat dan toleran.
-          </p>
-          <a href="?page=visi-misi" class="btn btn-primary mt-3">Baca Visi & Misi Lengkap <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <div class="p-4 bg-white rounded-3 shadow-sm h-100">
-          <h3 class="text-success mb-3">Layanan Utama</h3>
-          <ul class="list-unstyled">
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Bimbingan Rohani & Konseling</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Pemberdayaan Ekonomi Jemaat</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Pendidikan Keagamaan Kristen</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Pengembangan Toleransi Antar Umat</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Fasilitasi Hubungan Gereja & Pemerintah</li>
-          </ul>
-          <a href="#" class="btn btn-outline-success mt-3">Lihat Semua Layanan <i class="bi bi-box-arrow-up-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <?!= include('footer'); ?>
-</body>
-</html>
+          <h5 class="mt-3 mb-2">BERITA</h
