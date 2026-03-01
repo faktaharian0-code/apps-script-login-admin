@@ -1,0 +1,36 @@
+function doGet(e) {
+  // Fungsi utama yang dipanggil saat aplikasi web diakses.
+  // Memuat template HTML 'index' dan menampilkannya sebagai halaman web.
+  // setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL) penting untuk embed aplikasi web di iframe atau ketika menggunakan mode deployment tertentu.
+  return HtmlService.createTemplateFromFile('index')
+      .evaluate()
+      .setTitle('Login Admin')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function processLogin(username, password) {
+  // Fungsi sisi server untuk memproses permintaan login.
+  // Ini akan dipanggil dari JavaScript sisi klien.
+
+  // --- Implementasi Otentikasi ---
+  // Untuk demonstrasi, kita akan menggunakan kredensial yang di-hardcode.
+  // Dalam aplikasi nyata, Anda akan memverifikasi kredensial ini terhadap
+  // Google Sheet, database (seperti Firebase), atau layanan autentikasi lainnya.
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "password123";
+
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    // Jika kredensial cocok, kembalikan objek sukses.
+    return { success: true, message: "Login Berhasil! Selamat datang, Admin." };
+  } else {
+    // Jika kredensial tidak cocok, kembalikan objek gagal.
+    return { success: false, message: "Username atau Password salah. Silakan coba lagi." };
+  }
+}
+
+function include(filename) {
+  // Fungsi helper untuk menyertakan konten dari file HTML lain
+  // (misalnya, file 'script.html' yang berisi JavaScript klien)
+  // ke dalam file HTML utama (index.html).
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
