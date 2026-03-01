@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Struktur Organisasi</title>
+
+  <!-- Bootstrap 5 CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .main-content {
+      padding-top: 20px;
+    }
+    .content-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-width: 1000px; /* Lebar lebih luas untuk bagan organisasi */
+      margin: 0 auto;
+      padding: 40px;
+    }
+    .section-title {
+      color: #0d6efd;
+      font-weight: bold;
+      margin-bottom: 30px;
+      position: relative;
+      text-align: center;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+      width: 120px;
+      height: 4px;
+      background-color: #0d6efd;
+      border-radius: 2px;
+    }
+    .org-chart-container {
+      margin-top: 50px;
+      text-align: center;
+      overflow-x: auto; /* Memungkinkan scroll horizontal untuk bagan besar */
+      padding-bottom: 20px;
+    }
+    .org-node {
+      display: inline-block;
+      min-width: 180px;
+      padding: 15px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .org-node:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
+    }
+    .org-node-title {
+      font-weight: bold;
+      color: #0d6efd;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    .org-node-subtitle {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    /* Visualisasi konektor sederhana menggunakan div bertumpuk/flexbox */
+    .level {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .level + .level::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 30px; /* Menghubungkan level saat ini ke sebelumnya */
+        background-color: #ccc;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .level-connector {
+        position: relative;
+        width: 100%;
+        height: 30px;
+        margin: -10px 0; /* Overlap dengan margin node */
+        display: flex;
+        justify-content: center;
+    }
+    .level-connector::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background-color: #ccc;
+    }
+    .sub-level-connector {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+    }
+    .sub-level-connector::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 30px;
+        background-color: #ccc;
+        top: 0;
+    }
+    .sub-level-line {
+        position: absolute;
+        height: 2px;
+        background-color: #ccc;
+        top: 30px;
+    }
+    .branch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding-top: 30px; /* Ruang untuk garis penghubung */
+    }
+    .branch > .org-node {
+        margin-top: 0;
+    }
+    .branch-line-vertical {
+        position: absolute;
+        top: 0;
+        height: 30px;
+        width: 2px;
+        background-color: #ccc;
+    }
+    .branch-line-horizontal {
+        position: absolute;
+        top: 30px;
+        height: 2px;
+        background-color: #ccc;
+        width: calc(100% - 20px); /* Sesuaikan lebar */
+    }
+    .branch-children {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <?!= include('header'); ?>
+
+  <div class="container main-content">
+    <div class="content-card">
+      <h1 class="section-title">Struktur Organisasi</h1>
+      <p class="lead text-center mb-5">
+        Diagram di bawah ini menggambarkan susunan hierarki dan hubungan kerja dalam 
+        Direktorat Jenderal Bimbingan Masyarakat Kristen.
+      </p>
+
+      <!-- Bagan Organisasi Sederhana menggunakan grid Bootstrap dan CSS kustom untuk konektor -->
+      <div class="org-chart-container">
+        <!-- Level 1: Direktur Jenderal -->
+        <div class="level">
+          <div class="org-node bg-primary text-white">
+            <div class="org-node-title">Direktur Jenderal</div>
+            <div class="org-node-subtitle">Bimas Kristen</div>
+          </div>
+        </div>
+
+        <!-- Konektor ke Level 2 -->
+        <div class="level-connector"></div>
+
+        <!-- Level 2: Sekretaris Ditjen & Direktur -->
+        <div class="level">
+          <div class="branch">
+            <div class="branch-line-vertical"></div>
+            <div class="org-node bg-info text-white">
+              <div class="org-node-title">Sekretaris Ditjen</div>
+              <div class="org-node-subtitle">Bimas Kristen</div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-line-vertical"></div>
+            <div class="org-node bg-success text-white">
+              <div class="org-node-title">Direktur Urusan Agama Kristen</div>
+              <div class="org-node-subtitle">Urusan Agama Kristen</div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-line-vertical"></div>
+            <div class="org-node bg-warning text-dark">
+              <div class="org-node-title">Direktur Pendidikan Agama Kristen</div>
+              <div class="org-node-subtitle">Pendidikan Agama Kristen</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Konektor ke Level 3 (contoh untuk Sekretaris Ditjen saja) -->
+        <div class="level-connector" style="margin-top: 0;"></div>
+        <div class="sub-level-connector">
+            <span class="sub-level-line" style="width: 200px; left: calc(50% - 100px);"></span>
+            <span class="sub-level-line" style="width: 2px; height: 30px; top: 0; left: calc(50% - 100px);"></span>
+            <span class="sub-level-line" style="width: 2px; height: 30px; top: 0; left: calc(50% + 100px);"></span>
+        </div>
+        
+        <!-- Level 3: Bagian/Subdirektorat di bawah Sekretaris Ditjen (contoh) -->
+        <div class="level">
+          <div class="branch">
+            <div class="branch-line-vertical"></div>
+            <div class="org-node">
+              <div class="org-node-title">Bagian Perencanaan</div>
+              <div class="org-node-subtitle">Sekretariat Ditjen</div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-line-vertical"></div>
+            <div class="org-node">
+              <div class="org-node-title">Bagian Keuangan</div>
+              <div class="org-node-subtitle">Sekretariat Ditjen</div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-line-vertical"></div>
+            <div class="org-node">
+              <div class="org-node-title">Bagian Umum</div>
+              <div class="org-node-subtitle">Sekretariat Ditjen</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-5" role="alert">
+          <i class="bi bi-info-circle-fill me-2"></i>
+          Struktur ini adalah representasi umum. Detail divisi dan penanggung jawab dapat berubah sewaktu-waktu.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?!= include('footer'); ?>
+</body>
+</html>
