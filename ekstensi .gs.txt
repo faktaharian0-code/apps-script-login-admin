@@ -1,36 +1,66 @@
 function doGet(e) {
-  // Fungsi utama yang dipanggil saat aplikasi web diakses.
-  // Memuat template HTML 'index' dan menampilkannya sebagai halaman web.
-  // setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL) penting untuk embed aplikasi web di iframe atau ketika menggunakan mode deployment tertentu.
-  return HtmlService.createTemplateFromFile('index')
+  var page = e.parameter.page || 'login'; // Default ke halaman login jika tidak ada parameter
+
+  var template;
+  switch(page) {
+    case 'visi-misi':
+      template = 'visiMisi';
+      break;
+    case 'home':
+      template = 'home';
+      break;
+    case 'sejarah': // Rute baru untuk halaman Sejarah
+      template = 'sejarah';
+      break;
+    case 'tupoksi': // Rute baru untuk halaman Tupoksi
+      template = 'tupoksi';
+      break;
+    case 'struktur-organisasi': // Rute baru untuk halaman Struktur Organisasi
+      template = 'strukturOrganisasi';
+      break;
+    default:
+      template = 'index'; // Halaman login
+  }
+
+  return HtmlService.createTemplateFromFile(template)
       .evaluate()
-      .setTitle('Login Admin')
+      .setTitle(getPageTitle(template))
       .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
-function processLogin(username, password) {
-  // Fungsi sisi server untuk memproses permintaan login.
-  // Ini akan dipanggil dari JavaScript sisi klien.
+// Fungsi helper untuk mendapatkan title halaman
+function getPageTitle(template) {
+  const titles = {
+    'index': 'Login Admin',
+    'visiMisi': 'Visi & Misi',
+    'home': 'Homepage',
+    'sejarah': 'Sejarah',
+    'tupoksi': 'Tugas Pokok & Fungsi',
+    'strukturOrganisasi': 'Struktur Organisasi'
+  };
+  return titles[template] || 'Aplikasi Admin';
+}
 
-  // --- Implementasi Otentikasi ---
-  // Untuk demonstrasi, kita akan menggunakan kredensial yang di-hardcode.
-  // Dalam aplikasi nyata, Anda akan memverifikasi kredensial ini terhadap
-  // Google Sheet, database (seperti Firebase), atau layanan autentikasi lainnya.
+// Fungsi login (tetap sama seperti sebelumnya)
+function processLogin(username, password) {
   const ADMIN_USERNAME = "admin";
   const ADMIN_PASSWORD = "password123";
 
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-    // Jika kredensial cocok, kembalikan objek sukses.
-    return { success: true, message: "Login Berhasil! Selamat datang, Admin." };
+    return {
+      success: true,
+      message: "Login Berhasil! Selamat datang, Admin.",
+      redirectUrl: "?page=home" // Redirect ke homepage setelah login
+    };
   } else {
-    // Jika kredensial tidak cocok, kembalikan objek gagal.
-    return { success: false, message: "Username atau Password salah. Silakan coba lagi." };
+    return {
+      success: false,
+      message: "Username atau Password salah. Silakan coba lagi."
+    };
   }
 }
 
+// Fungsi include untuk menyertakan konten dari file HTML lain
 function include(filename) {
-  // Fungsi helper untuk menyertakan konten dari file HTML lain
-  // (misalnya, file 'script.html' yang berisi JavaScript klien)
-  // ke dalam file HTML utama (index.html).
   return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
