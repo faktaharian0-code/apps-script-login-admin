@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visi & Misi</title>
+
+  <!-- Bootstrap 5 CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  
+  <style>
+    body {
+      background-color: #f8f9fa; /* Latar belakang abu-abu terang */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .main-content {
+      padding-top: 20px; /* Penyesuaian untuk navbar fixed-top */
+    }
+    .content-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .header-section {
+      background: linear-gradient(45deg, #0d6efd, #6610f2);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+    .section-card {
+      border: none;
+      border-radius: 12px;
+      background: #f8f9fa;
+      margin-bottom: 25px;
+      transition: transform 0.3s;
+    }
+    .section-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .section-icon {
+      font-size: 2.5rem;
+      color: #0d6efd;
+      margin-bottom: 15px;
+    }
+    .mission-item {
+      padding: 12px 20px;
+      background: white;
+      border-left: 4px solid #0d6efd;
+      margin-bottom: 10px;
+      border-radius: 0 8px 8px 0;
+      transition: background 0.3s;
+    }
+    .mission-item:hover {
+      background: #e7f1ff;
+    }
+    .btn-back {
+      background: linear-gradient(45deg, #0d6efd, #6610f2);
+      border: none;
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      color: white;
+      text-decoration: none;
+    }
+    .btn-back:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <?!= include('header'); ?>
+
+  <div class="container main-content">
+    <div class="content-card">
+      <!-- Header -->
+      <div class="header-section">
+        <h1 class="display-4 fw-bold mb-3">Visi & Misi</h1>
+        <p class="lead mb-0">Bimbingan Masyarakat Kristen Kemenag Pegaf</p>
+      </div>
+
+      <!-- Content -->
+      <div class="p-5">
+        <!-- Visi Section -->
+        <div class="section-card p-4">
+          <div class="d-flex align-items-center mb-3">
+            <div class="section-icon me-3">
+              <i class="bi bi-eye"></i>
+            </div>
+            <div>
+              <h2 class="h4 fw-bold text-primary mb-1">Visi</h2>
+              <p class="text-muted mb-0">Arah jangka panjang institusi kami</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-3 border">
+            <p class="lead mb-0" style="font-size: 1.1rem; line-height: 1.8;">
+              Menjadi <strong>institusi unggul</strong> dalam pelayanan dan bimbingan masyarakat Kristen, 
+              serta menjadi <strong>mitra terpercaya</strong> dalam penguatan spiritual dan sosial 
+              guna mewujudkan kehidupan togetherness yang berkelanjutan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Misi Section -->
+        <div class="section-card p-4">
+          <div class="d-flex align-items-center mb-3">
+            <div class="section-icon me-3">
+              <i class="bi bi-list-check"></i>
+            </div>
+            <div>
+              <h2 class="h4 fw-bold text-primary mb-1">Misi</h2>
+              <p class="text-muted mb-0">Langkah konkret untuk mewujudkan visi</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mission-item">
+                <h5 class="fw-bold mb-2">1. Pelayanan Berkualitas</h5>
+                <p class="mb-0 text-muted">Memberikan bimbingan spiritual yang professional, berkelanjutan, dan berakar pada nilai-nilai Kristiani.</p>
+              </div>
+              <div class="mission-item">
+                <h5 class="fw-bold mb-2">2. Pembangunan Komunitas</h5>
+                <p class="mb-0 text-muted">Mengembangkan program penguatan komunitas Kristen yang responsif terhadap kebutuhan lokal dan global.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mission-item">
+                <h5 class="fw-bold mb-2">3. Mediasi & Dialog</h5>
+                <p class="mb-0 text-muted">Menjembatani komunikasi efektif antara umat Kristen dan pemerintah untuk harmoni sosial.</p>
+              </div>
+              <div class="mission-item">
+                <h5 class="fw-bold mb-2">4. Peningkatan Kompetensi</h5>
+                <p class="mb-0 text-muted">Meningkatkan kemampuan tenaga pelayanan melalui pelatihan kontinu dan pembangunan kapasitas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="section-card p-4">
+          <div class="d-flex align-items-center mb-3">
+            <div class="section-icon me-3">
+              <i class="bi bi-heart-pulse"></i>
+            </div>
+            <div>
+              <h2 class="h4 fw-bold text-primary mb-1">Nilai Inti</h2>
+              <p class="text-muted mb-0">Prinsip yang menggerakan kami</p>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-3 col-6 mb-3">
+              <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                <i class="bi bi-gem fs-3"></i>
+              </div>
+              <h6 class="mt-2 fw-bold">Integritas</h6>
+              <small class="text-muted">Taat pada prinsip Kristiani</small>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+              <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                <i class="bi bi-people fs-3"></i>
+              </div>
+              <h6 class="mt-2 fw-bold">Pelayanan</h6>
+              <small class="text-muted">Mengutamakan kebutuhan orang lain</small>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+              <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                <i class="bi bi-lightbulb fs-3"></i>
+              </div>
+              <h6 class="mt-2 fw-bold">Inovasi</h6>
+              <small class="text-muted">Beradaptasi dengan zaman</small>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+              <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                <i class="bi bi-star fs-3"></i>
+              </div>
+              <h6 class="mt-2 fw-bold">Keunggulan</h6>
+              <small class="text-muted">Standar terbaik di bidangnya</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center py-4">
+          <p class="mb-3">Tertarik bergabung atau mengetahui lebih lanjut?</p>
+          <a href="#" class="btn btn-primary btn-lg px-4 py-2" onclick="alert('Hubungi kami di: info@kemenag.go.id')">
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?!= include('footer'); ?>
+</body>
+</html>
